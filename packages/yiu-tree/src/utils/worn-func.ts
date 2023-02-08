@@ -13,7 +13,7 @@ export const worringNodeKeyShouldBeValid = (
     key: string,
     value: any
 ) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (__YiuTreeWorn__ !== 'No') {
         if (!log) return
         if (value || value === 0) return
         console.warn(
@@ -36,7 +36,7 @@ export const worringNodeKeyShouldBeArr = (
     key: string,
     value: any
 ) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (__YiuTreeWorn__ !== 'No') {
         if (!log) return
         if (Array.isArray(value) || typeof value === 'undefined') return
         console.warn(
@@ -59,7 +59,7 @@ export const worringFuncDoShouldBeValid = (
     funcName: string,
     value: any
 ) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (__YiuTreeWorn__ !== 'No') {
         if (!log) return
         if (value || value === 0) return
         console.warn(
@@ -82,7 +82,7 @@ export const worringFuncDoShouldBeArr = (
     funcName: string,
     value: any
 ) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (__YiuTreeWorn__ !== 'No') {
         if (!log) return
         if (Array.isArray(value) || typeof value === 'undefined') return
         console.warn(
@@ -105,7 +105,7 @@ export const worringOptKeyShouldBe = (
     type: string,
     value: any
 ) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (__YiuTreeWorn__ !== 'No') {
         if (!treeOpt.worn) return
         console.warn(
             `TreeOpt's "${key}" execution result type should be a "${type}", but a "${typeof value}" is received.`,

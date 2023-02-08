@@ -1,3 +1,7 @@
+declare global {
+    const __YiuTreeWorn__: any
+}
+
 export type TreeNodeInfo<T = any> = {
     /**
      * 层级数，从1开始
