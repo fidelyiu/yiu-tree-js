@@ -1,5 +1,23 @@
 {
   "name": "web-site",
+  "scripts": {
+    "clear:dist": "rimraf docs/.vitepress/dist",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "npm run clear:dist && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
   "author": "Field Yiu",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rimraf": "^4.1.2",
+    "vitepress": "1.0.0-alpha.45",
+    "vue": "^3.2.47"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  }
 }
