@@ -18,7 +18,9 @@ function _opBySearch<T>(
         const currentPath = nodePath.slice()
         currentPath.push(item)
         const children = getTreePropsValue<T>(item, 'children', opt)
-        if (Array.isArray(children) && children.length > 0) {
+        let childrenLen = 0
+        if (Array.isArray(children)) childrenLen = children.length
+        if (childrenLen > 0) {
             setTreePropsValue<T>(
                 item,
                 'children',
@@ -38,7 +40,7 @@ function _opBySearch<T>(
             scFunc(item, {
                 level: currentLevel + 1,
                 index,
-                isLeaf: !children.length,
+                isLeaf: !childrenLen,
                 isFirst: index === 0,
                 isLast: index === treeData.length - 1,
                 parent,
@@ -50,7 +52,7 @@ function _opBySearch<T>(
             opFunc(item, {
                 level: currentLevel + 1,
                 index,
-                isLeaf: !children.length,
+                isLeaf: !childrenLen,
                 isFirst: index === 0,
                 isLast: index === treeData.length - 1,
                 parent,

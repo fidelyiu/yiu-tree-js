@@ -16,11 +16,13 @@ function _getOneNodePathBySearch<T>(
         const currentPath = nodePath.slice()
         currentPath.push(item)
         const children = getTreePropsValue<T>(item, 'children', opt)
+        let childrenLen = 0
+        if (Array.isArray(children)) childrenLen = children.length
         if (
             scFunc(item, {
                 level: currentLevel + 1,
                 index,
-                isLeaf: !children.length,
+                isLeaf: !childrenLen,
                 isFirst: index === 0,
                 isLast: index === treeData.length - 1,
                 parent,
@@ -30,7 +32,7 @@ function _getOneNodePathBySearch<T>(
         ) {
             return [item]
         }
-        if (Array.isArray(children) && children.length) {
+        if (childrenLen) {
             const childrenResult = _getOneNodePathBySearch<T>(
                 children,
                 scFunc,

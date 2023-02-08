@@ -65,7 +65,8 @@ function _getFilterBySearch<T>(
             const currentPath = nodePath.slice()
             currentPath.push(treeNode)
             const children = getTreePropsValue<T>(treeNode, 'children', opt)
-            const childrenLen = children.length
+            let childrenLen = 0
+            if (Array.isArray(children)) childrenLen = children.length
             // 当前节点是否匹配
             const currentMatch = !!scFunc(treeNode, {
                 level: currentLevel + 1,
