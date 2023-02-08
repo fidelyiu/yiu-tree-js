@@ -50,7 +50,7 @@ export type TreeOperationFunc<T = any> = (
 ) => void
 
 export type TreeKeyType = 'id' | 'pid' | 'children'
-export type TreeBaseOpt = {
+export type TreeBaseOpt<T = any> = {
     /**
      * 使用`key`解析时
      */
@@ -58,18 +58,15 @@ export type TreeBaseOpt = {
     pidProp?: string
     childrenProp?: string
     /**
-     * 当传参错误时是否警告
-     */
-    worn?: boolean
-    /**
      * 使用`func`解析时
      */
-    idGetter?: (treeNode: any) => string
-    idSetter?: (treeNode: any, value: any) => void
-    pidGetter?: (treeNode: any) => string
-    pidSetter?: (treeNode: any, value: any) => void
-    childrenGetter?: (treeNode: any) => Array<any> | undefined
-    childrenSetter?: (treeNode: any, value: any) => void
+    idGetter?: (treeNode: T) => any
+    idSetter?: (treeNode: T, value: any) => void
+    pidGetter?: (treeNode: T) => string
+    pidSetter?: (treeNode: T, value: any) => void
+    childrenGetter?: (treeNode: T) => T[] | undefined
+    childrenSetter?: (treeNode: T, value: any) => void
+
     /**
      * 是否深拷贝
      */
@@ -78,13 +75,18 @@ export type TreeBaseOpt = {
      * 深拷贝函数
      * 默认`JSON.parse(JSON.stringify(data))`
      */
-    deepCloneFunc?: (d: any) => any | void
+    deepCloneFunc?: (d: T[]) => T[] | undefined
+
+    /**
+     * 当传参错误时是否警告
+     */
+    worn?: boolean
 }
 
 /**
  * 树的过滤配置类型
  */
-export type TreeFilterOption = {
+export type TreeFilterOption<T = any> = {
     /**
      * 默认false，父节点是否必须 需要匹配
      */
@@ -93,4 +95,4 @@ export type TreeFilterOption = {
      * 默认false，子节点是否必须 需要匹配
      */
     childrenMatch?: boolean
-} & TreeBaseOpt
+} & TreeBaseOpt<T>
