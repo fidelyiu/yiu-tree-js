@@ -1,0 +1,12 @@
+node_modules
+cache
+.eslintignore
+.eslintrc.json
+.prettierignore
+.prettierrc.json
+rollup.config.ts
+tsconfig.json
+tsconfig.type.json
+jest.config.ts
+test
+coverage
