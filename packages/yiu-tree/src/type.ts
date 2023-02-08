@@ -22,7 +22,7 @@ export type TreeNodeInfo<T = any> = {
     /**
      * 父节点
      */
-    parent: T
+    parent: T | undefined
     /**
      * 节点路径
      */
@@ -37,7 +37,7 @@ export type TreeNodeInfo<T = any> = {
  * 树的搜索函数类型
  */
 export type TreeSearchFunc<T = any> = (
-    treeNode: any,
+    treeNode: T,
     info?: TreeNodeInfo<T>
 ) => boolean
 
@@ -86,7 +86,7 @@ export type TreeBaseOpt<T = any> = {
 /**
  * 树的过滤配置类型
  */
-export type TreeFilterOption<T = any> = {
+export type TreeFilterOpt<T = any> = {
     /**
      * 默认false，父节点是否必须 需要匹配
      */
