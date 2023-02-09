@@ -11,40 +11,39 @@ function _getOneNodePathBySearch<T>(
     opt?: TreeBaseOpt<T>
 ): Array<T> {
     const treeDataLen = treeData.length
-    for (let index = 0; index < treeDataLen; index++) {
-        const item = treeData[index]
-        const currentPath = nodePath.slice()
-        currentPath.push(item)
-        const children = getTreePropsValue<T>(item, 'children', opt)
-        let childrenLen = 0
-        if (Array.isArray(children)) childrenLen = children.length
-        if (
-            scFunc(item, {
-                level: currentLevel + 1,
-                index,
-                isLeaf: !childrenLen,
-                isFirst: index === 0,
-                isLast: index === treeData.length - 1,
-                parent,
-                path: currentPath,
-                parentPath: nodePath,
-            })
-        ) {
-            return [item]
-        }
-        if (childrenLen) {
-            const childrenResult = _getOneNodePathBySearch<T>(
-                children,
-                scFunc,
-                currentLevel + 1,
-                item,
-                currentPath,
-                opt
-            )
-            if (childrenResult && childrenResult.length) {
-                return [item, ...childrenResult]
-            }
-        }
+    for (let i = 0; i < treeDataLen; i++) {
+        const treeNode = treeData[i]
+        const currentPath = [...nodePath, treeNode]
+        const children = getTreePropsValue<T>(treeNode, 'children', opt)
+        const childrenIsArr = Array.isArray(children)
+        const childrenLen = childrenIsArr ? children.length : 0
+
+        const currentSearchResult = scFunc(treeNode, {
+            level: currentLevel + 1,
+            index: i,
+            isLeaf: !childrenLen,
+            isFirst: i === 0,
+            isLast: i === treeDataLen - 1,
+            parent,
+            path: currentPath,
+            parentPath: nodePath,
+        })
+
+        if (currentSearchResult) return [treeNode]
+
+        if (!childrenLen) continue
+
+        const childrenResult = _getOneNodePathBySearch<T>(
+            children,
+            scFunc,
+            currentLevel + 1,
+            treeNode,
+            currentPath,
+            opt
+        )
+
+        if (!childrenResult.length) continue
+        return [treeNode, ...childrenResult]
     }
     return []
 }
