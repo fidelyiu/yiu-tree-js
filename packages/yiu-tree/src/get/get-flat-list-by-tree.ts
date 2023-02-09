@@ -20,7 +20,7 @@ export default function getFlatListByTree<T>(
     const result: Array<T> = []
     const stack = [...deepData]
     while (stack.length) {
-        const node = stack.pop()
+        const node = stack.shift()
         if (!node) continue
         result.push(node)
         const children = getTreePropsValue<T>(node, 'children', opt)
