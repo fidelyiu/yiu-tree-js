@@ -66,6 +66,9 @@ function _opBySearch<T>(
 
 /**
  * 操作所有符合查询条件的节点
+ *
+ * 默认深拷贝
+ *
  * @param treeData 树
  * @param opFunc 操作函数
  * @param scFunc 过滤函数，必须返回boolen（不要修改节点）

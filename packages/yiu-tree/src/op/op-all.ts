@@ -3,6 +3,9 @@ import treeOpBySearch from './op-by-search'
 
 /**
  * 操作所有节点
+ *
+ * 默认深拷贝
+ *
  * @param treeData 树
  * @param opFunc 操作函数
  * @param opt 树解析配置
