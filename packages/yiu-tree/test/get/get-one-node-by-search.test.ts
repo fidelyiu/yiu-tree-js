@@ -1,24 +1,24 @@
-import { getOneNodePathBySearch } from '../../src'
+import { getOneNodeBySearch } from '../../src'
 
-describe('数组中获取单个节点路径测试', () => {
+describe('数组中获取单个节点测试', () => {
     test('非法传入', () => {
         expect(
-            getOneNodePathBySearch(
+            getOneNodeBySearch(
                 'Should Be Array' as unknown as any[],
                 () => true
             )
-        ).toStrictEqual([])
+        ).toBe(undefined)
     })
     test('非函数传入', () => {
         expect(
-            getOneNodePathBySearch(
+            getOneNodeBySearch(
                 [],
                 'Should Be Funcation' as unknown as () => boolean
             )
-        ).toStrictEqual([])
+        ).toBe(undefined)
     })
     test('空数组传入', () => {
-        expect(getOneNodePathBySearch([], () => false)).toStrictEqual([])
+        expect(getOneNodeBySearch([], () => false)).toBe(undefined)
     })
 
     test('测试1', () => {
@@ -54,36 +54,10 @@ describe('数组中获取单个节点路径测试', () => {
             { id: 4, name: 'name-4' },
         ]
 
-        const result = [
-            {
-                id: 1,
-                name: 'name-1',
-                children: [
-                    {
-                        id: '1-1',
-                        name: 'name-1-1',
-                        children: [
-                            { id: '1-1-1', name: 'name@1@1@1' },
-                            { id: '1-1-2', name: 'name-1-1-2' },
-                        ],
-                    },
-                    { id: '1-2', name: 'name@1@2' },
-                    { id: '1-3', name: 'name-1-3' },
-                ],
-            },
-            {
-                id: '1-1',
-                name: 'name-1-1',
-                children: [
-                    { id: '1-1-1', name: 'name@1@1@1' },
-                    { id: '1-1-2', name: 'name-1-1-2' },
-                ],
-            },
-            { id: '1-1-1', name: 'name@1@1@1' },
-        ]
+        const result = { id: '1-1-1', name: 'name@1@1@1' }
 
         expect(
-            getOneNodePathBySearch<TreeNode>(
+            getOneNodeBySearch<TreeNode>(
                 tree,
                 (node) => node.name === 'name@1@1@1'
             )
@@ -123,36 +97,10 @@ describe('数组中获取单个节点路径测试', () => {
             },
         ]
 
-        const result = [
-            {
-                id: 1,
-                name: 'name-1',
-                children: [
-                    {
-                        id: '1-1',
-                        name: 'name-1-1',
-                        children: [
-                            { id: '1-1-1', name: 'name@1@1@1' },
-                            { id: '1-1-2', name: 'name-1-1-2' },
-                        ],
-                    },
-                    { id: '1-2', name: 'name@1@2' },
-                    { id: '1-3', name: 'name-1-3' },
-                ],
-            },
-            {
-                id: '1-1',
-                name: 'name-1-1',
-                children: [
-                    { id: '1-1-1', name: 'name@1@1@1' },
-                    { id: '1-1-2', name: 'name-1-1-2' },
-                ],
-            },
-            { id: '1-1-1', name: 'name@1@1@1' },
-        ]
+        const result = { id: '1-1-1', name: 'name@1@1@1' }
 
         expect(
-            getOneNodePathBySearch<TreeNode>(
+            getOneNodeBySearch<TreeNode>(
                 tree,
                 (node) => node.name === 'name@1@1@1'
             )
