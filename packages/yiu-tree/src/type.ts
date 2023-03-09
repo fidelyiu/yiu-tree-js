@@ -42,7 +42,7 @@ export type TreeNodeInfo<T = any> = {
  */
 export type TreeSearchFunc<T = any> = (
     treeNode: T,
-    info?: TreeNodeInfo<T>
+    info: TreeNodeInfo<T>
 ) => boolean
 
 /**
@@ -50,7 +50,7 @@ export type TreeSearchFunc<T = any> = (
  */
 export type TreeOperationFunc<T = any> = (
     treeNode: T,
-    info?: TreeNodeInfo<T>
+    info: TreeNodeInfo<T>
 ) => void
 
 export type TreeKeyType = 'id' | 'pid' | 'children'
