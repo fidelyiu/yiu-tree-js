@@ -15,52 +15,51 @@ function _getFilterBySearch<T>(
     const { parentMatch, childrenMatch } = opt
     const treeDataLen = treeData.length
     if (!parentMatch) {
-        if (!childrenMatch) {
-            // 父子节点都不需要匹配，直接返回
-            return treeData
-        } else {
-            // 父节点不需要匹配，子节点需要匹配
-            for (let i = 0; i < treeDataLen; i++) {
-                const treeNode = treeData[i]
-                const currentPath = [...nodePath, treeNode]
-                const children = getTreePropsValue<T>(treeNode, 'children', opt)
-                const childrenIsArr = Array.isArray(children)
-                const childrenLen = childrenIsArr ? children.length : 0
-                // 当前节点是否匹配
-                const currentMatch = !!scFunc(treeNode, {
-                    level: currentLevel + 1,
-                    index: i,
-                    isLeaf: !childrenLen,
-                    isFirst: i === 0,
-                    isLast: i === treeDataLen - 1,
-                    parent,
-                    path: currentPath,
-                    parentPath: nodePath,
-                })
+        // 父节点不需要匹配
+        for (let i = 0; i < treeDataLen; i++) {
+            const treeNode = treeData[i]
+            const currentPath = [...nodePath, treeNode]
+            const children = getTreePropsValue<T>(treeNode, 'children', opt)
+            const childrenIsArr = Array.isArray(children)
+            const childrenLen = childrenIsArr ? children.length : 0
+            // 当前节点是否匹配
+            const currentMatch = !!scFunc(treeNode, {
+                level: currentLevel + 1,
+                index: i,
+                isLeaf: !childrenLen,
+                isFirst: i === 0,
+                isLast: i === treeDataLen - 1,
+                parent,
+                path: currentPath,
+                parentPath: nodePath,
+            })
 
-                /* 不管当前匹不匹配，都要过滤子节点 */
-                const childrenFilterResult = childrenIsArr
-                    ? _getFilterBySearch<T>(
-                          children,
-                          scFunc,
-                          currentLevel + 1,
-                          treeNode,
-                          currentPath,
-                          opt
-                      )
-                    : []
-
-                /* 当前节点不匹配，子节点也全部不匹配 */
-                if (!currentMatch && !childrenFilterResult.length) continue
-
-                setTreePropsValue<T>(
-                    treeNode,
-                    'children',
-                    childrenFilterResult,
-                    opt
-                )
+            if (!childrenMatch && currentMatch) {
+                /* 如果当前节点匹配了，且子节点就不需要匹配 */
                 result.push(treeNode)
+                continue
             }
+
+            /* 过滤子节点 */
+            const childrenFilterResult = childrenIsArr
+                ? _getFilterBySearch<T>(
+                      children,
+                      scFunc,
+                      currentLevel + 1,
+                      treeNode,
+                      currentPath,
+                      opt
+                  )
+                : []
+            /* 当前节点不匹配，子节点也全部不匹配 */
+            if (!currentMatch && !childrenFilterResult.length) continue
+            setTreePropsValue<T>(
+                treeNode,
+                'children',
+                childrenFilterResult,
+                opt
+            )
+            result.push(treeNode)
         }
     } else {
         // 父节点需求匹配

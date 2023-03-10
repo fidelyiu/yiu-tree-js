@@ -226,7 +226,7 @@ describe('过滤测试', () => {
         }
         expect(
             getFilterBySearch([{ id: '1' }, { id: '2' }], () => false, matchOpt)
-        ).toStrictEqual([{ id: '1' }, { id: '2' }])
+        ).toStrictEqual([])
     })
     describe('非法传入', () => {
         test('函数非法传入', () => {
