@@ -1,6 +1,6 @@
 {
     "name": "yiu-tree",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A js library for manipulating trees.",
     "scripts": {
         "format": "prettier --ignore-path .prettierignore --write .",
