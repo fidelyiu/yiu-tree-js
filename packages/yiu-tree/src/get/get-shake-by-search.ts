@@ -82,7 +82,7 @@ export default function getShakeBySearch<T>(
     let hasShake = false
     do {
         const shakeResult = _getShakeBySearch<T>(
-            deepData,
+            result,
             scFunc,
             0,
             undefined,
