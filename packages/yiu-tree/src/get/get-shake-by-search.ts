@@ -14,6 +14,12 @@ function _getShakeBySearch<T>(
     let shakeResult = false
     let hasShake = false
     const result: T[] = []
+    if (!Array.isArray(treeData) || !treeData.length) {
+        return {
+            data: result,
+            hasShake,
+        }
+    }
     do {
         hasShake = false
         const treeDataLen = treeData.length
