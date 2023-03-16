@@ -9,6 +9,7 @@ import getMaxLevel from './get/get-max-level'
 import getOneNodeBySearch from './get/get-one-node-by-search'
 import getOneNodePathBySearch from './get/get-one-node-path-by-search'
 import getTreeByList from './get/get-tree-by-list'
+import getShakeBySearch from './get/get-shake-by-search'
 import getTreeByListSimple from './get/get-tree-by-list-simple'
 import getFlatListByTree from './get/get-flat-list-by-tree'
 export {
@@ -18,6 +19,7 @@ export {
     getOneNodeBySearch,
     getOneNodePathBySearch,
     getTreeByList,
+    getShakeBySearch,
     getTreeByListSimple,
     getFlatListByTree,
 }
