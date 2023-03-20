@@ -38,7 +38,6 @@ type TreeBaseOpt<T = any> = {
      * 当传参错误时是否警告
      */
     worn?: boolean
-    /* 暂未实现 */
     direction?: boolean
 }
 ```
