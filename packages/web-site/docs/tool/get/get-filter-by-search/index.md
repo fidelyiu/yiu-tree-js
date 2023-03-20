@@ -31,6 +31,8 @@ console.log(`过滤结果 :>> ${result}`)
 getFilterBySearch(tree, searchFunc, [opt])
 ```
 
+方法默认开启深拷贝。
+
 根据传入的搜索方法返回负荷条件的树。
 
 - `NodeType`: `T`
@@ -46,7 +48,7 @@ getFilterBySearch(tree, searchFunc, [opt])
   - 说明: 过滤配置
 
 
-## 过滤配置
+## 配置说明
 
 在`TreeFilterOpt`中有两项配置对于过滤来说很重要：
 
