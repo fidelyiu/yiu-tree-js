@@ -1,5 +1,5 @@
 ---
-Tree方法类型
+title: Tree方法类型
 ---
 
 # Tree方法类型
