@@ -8,7 +8,7 @@ import getTreePropsValue from '../utils/get-tree-props-value'
  * 默认深拷贝
  *
  * @param list 一维树节点数组
- * @param opt 过滤配置 & 树解析配置
+ * @param opt 树解析配置
  * @returns 新仅包含叶子节点的数组
  */
 export default function getLeafNodeByList<T>(
