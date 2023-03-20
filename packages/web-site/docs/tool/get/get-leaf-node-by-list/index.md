@@ -28,7 +28,7 @@ console.log(`叶子节点结果 :>> ${result}`)
 ## 方法说明
 
 
-```txt
+```
 getLeafNodeByList(nodeList, [opt])
 ```
 

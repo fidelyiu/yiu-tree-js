@@ -27,7 +27,7 @@ console.log(`是否存在节点 :>> ${result}`)
 
 ## 方法说明
 
-```txt
+```
 hasBySearch(tree, searchFunc, [opt])
 ```
 

@@ -28,7 +28,7 @@ console.log(`最大层级数 :>> ${result}`)
 ## 方法说明
 
 
-```txt
+```
 getMaxLevel(tree, [opt])
 ```
 

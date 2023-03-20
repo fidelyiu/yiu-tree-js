@@ -27,7 +27,7 @@ console.log(`展开结果 :>> ${result}`)
 
 ## 方法说明
 
-```txt
+```
 getFlatListByTree(tree, [opt])
 ```
 

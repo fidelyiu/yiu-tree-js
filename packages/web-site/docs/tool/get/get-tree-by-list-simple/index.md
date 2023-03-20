@@ -27,7 +27,7 @@ console.log(`构造的树 :>> ${result}`)
 
 ## 方法说明
 
-```txt
+```
 getTreeByListSimple(nodeList, [opt])
 ```
 

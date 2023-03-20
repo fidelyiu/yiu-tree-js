@@ -27,7 +27,7 @@ console.log(`过滤结果 :>> ${result}`)
 
 ## 方法描述
 
-```txt
+```
 getFilterBySearch(tree, searchFunc, [opt])
 ```
 

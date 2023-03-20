@@ -31,7 +31,7 @@ console.log(`操作后的树 :>> ${result}`)
 
 ## 方法说明
 
-```txt
+```
 opBySearch(tree, opFunc, scFunc, [opt])
 ```
 
