@@ -9,7 +9,7 @@ title: 获取叶子节点
 ```js
 import { getLeafNodeByList } from "yiu-tree"
 
-const tree = [
+const nodeList = [
     { id: 1 },
     { id: '1-1', pid: 1 },
     { id: '1-1-1', pid: '1-1' },
@@ -21,7 +21,7 @@ const tree = [
     { id: 3 },
     { id: 4 },
 ]
-const result = getLeafNodeByList(tree)
+const result = getLeafNodeByList(nodeList)
 console.log(`叶子节点结果 :>> ${result}`)
 ```
 
@@ -29,7 +29,7 @@ console.log(`叶子节点结果 :>> ${result}`)
 
 
 ```plaintext
-getLeafNodeByList(tree, [opt])
+getLeafNodeByList(nodeList, [opt])
 ```
 
 方法默认开启深拷贝。
@@ -38,7 +38,7 @@ getLeafNodeByList(tree, [opt])
 
 - `NodeType`: `T`
 - `getLeafNodeByList<T>`: 泛型支持传入你定义的节点类型
-- `tree`:
+- `nodeList`:
   - 类型: `T[]`
   - 说明: 传入的树数据
 - `opt`:
