@@ -15,7 +15,7 @@ title: 实践&建议
 ### 禁用深拷贝
 
 ```js
-const result = getFilterBySearch([], (node) => true, { deepClone: false })
+const result = getFilterBySearch([], () => true, { deepClone: false })
 ```
 
 ### 替换深拷贝方法
@@ -23,5 +23,5 @@ const result = getFilterBySearch([], (node) => true, { deepClone: false })
 ```js
 import { cloneDeep } from "lodash"
 
-const result = getFilterBySearch([], (node) => true, { deepCloneFunc: cloneDeep })
+const result = getFilterBySearch([], () => true, { deepCloneFunc: cloneDeep })
 ```
