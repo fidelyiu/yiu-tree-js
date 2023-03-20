@@ -39,7 +39,7 @@ type TreeBaseOpt<T = any> = {
      */
     worn?: boolean
     /* 暂未实现 */
-    direction?: TreeDirectionFunc<T>
+    direction?: boolean
 }
 ```
 
@@ -50,6 +50,10 @@ type TreeBaseOpt<T = any> = {
 如果你定义了`Prop`，那么工具就会通过你指定的`Prop`读取和写入。
 
 如果你的这些信息获取方式比较复杂，那么你可以定义`Getter`、`Setter`方法，来进行读取和写入。
+
+### direction
+
+如果`direction`为`false`，则工具的执行方向会先处理子节点，再处理当前节点。
 
 ## TreeFilterOpt
 

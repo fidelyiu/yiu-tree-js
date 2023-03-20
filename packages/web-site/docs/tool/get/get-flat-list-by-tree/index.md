@@ -35,6 +35,8 @@ getFlatListByTree(tree, [opt])
 
 将树全部展平为一维数组。
 
+展平的顺序为`n1,n1-1,n1-1-1,n1-2,n2,n3`，不受`opt.direction`影响。
+
 - `NodeType`: `T`
 - `getFlatListByTree<T>`: 泛型支持传入你定义的节点类型
 - `tree`:

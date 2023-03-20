@@ -53,14 +53,6 @@ export type TreeOperationFunc<T = any> = (
     info: TreeNodeInfo<T>
 ) => void
 
-/**
- * 树的方向函数类型
- */
-export type TreeDirectionFunc<T = any> = (
-    treeNode: T,
-    info: TreeNodeInfo<T>
-) => number
-
 export type TreeKeyType = 'id' | 'pid' | 'children'
 export type TreeBaseOpt<T = any> = {
     /**
@@ -93,7 +85,7 @@ export type TreeBaseOpt<T = any> = {
      * 当传参错误时是否警告
      */
     worn?: boolean
-    direction?: TreeDirectionFunc<T>
+    direction?: boolean
 }
 
 /**
