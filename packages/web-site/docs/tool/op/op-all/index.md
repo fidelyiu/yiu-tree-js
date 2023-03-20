@@ -27,7 +27,7 @@ console.log(`操作后的树 :>> ${result}`)
 
 ## 方法说明
 
-```plaintext
+```txt
 opAll(tree, opFunc, [opt])
 ```
 

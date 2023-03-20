@@ -28,7 +28,7 @@ console.log(`查询结果 :>> ${result}`)
 
 ## 方法说明
 
-```plaintext
+```txt
 getOneNodePathBySearch(tree, searchFunc, [opt])
 ```
 
