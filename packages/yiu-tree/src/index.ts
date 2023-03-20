@@ -13,15 +13,15 @@ import getShakeBySearch from './get/get-shake-by-search'
 import getTreeByListSimple from './get/get-tree-by-list-simple'
 import getFlatListByTree from './get/get-flat-list-by-tree'
 export {
-    getFilterBySearch,
-    getLeafNodeByList,
-    getMaxLevel,
-    getOneNodeBySearch,
-    getOneNodePathBySearch,
-    getTreeByList,
-    getShakeBySearch,
-    getTreeByListSimple,
-    getFlatListByTree,
+  getFilterBySearch,
+  getLeafNodeByList,
+  getMaxLevel,
+  getOneNodeBySearch,
+  getOneNodePathBySearch,
+  getTreeByList,
+  getShakeBySearch,
+  getTreeByListSimple,
+  getFlatListByTree,
 }
 
 // has工具

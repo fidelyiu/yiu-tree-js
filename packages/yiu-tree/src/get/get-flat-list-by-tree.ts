@@ -12,19 +12,19 @@ import getTreePropsValue from '../utils/get-tree-props-value'
  * @returns 所有树的节点数组
  */
 export default function getFlatListByTree<T>(
-    treeData: Array<T>,
-    opt?: TreeBaseOpt<T>
+  treeData: Array<T>,
+  opt?: TreeBaseOpt<T>
 ): Array<T> {
-    const deepData = getDeepTree<T>(treeData, opt, true)
-    if (!Array.isArray(deepData) || !deepData.length) return []
-    const result: Array<T> = []
-    const stack = [...deepData]
-    while (stack.length) {
-        const node = stack.shift()
-        if (!node) continue
-        result.push(node)
-        const children = getTreePropsValue<T>(node, 'children', opt)
-        if (children && Array.isArray(children)) stack.unshift(...children)
-    }
-    return result
+  const deepData = getDeepTree<T>(treeData, opt, true)
+  if (!Array.isArray(deepData) || !deepData.length) return []
+  const result: Array<T> = []
+  const stack = [...deepData]
+  while (stack.length) {
+    const node = stack.shift()
+    if (!node) continue
+    result.push(node)
+    const children = getTreePropsValue<T>(node, 'children', opt)
+    if (children && Array.isArray(children)) stack.unshift(...children)
+  }
+  return result
 }

@@ -3,63 +3,63 @@ import getDeepTree from '../utils/get-deep-tree'
 import getTreePropsValue from '../utils/get-tree-props-value'
 
 function _getOneNodePathBySearch<T>(
-    treeData: Array<T>,
-    scFunc: TreeSearchFunc<T>,
-    currentLevel: number,
-    parent: T | undefined,
-    nodePath: Array<T>,
-    opt?: TreeBaseOpt<T>
+  treeData: Array<T>,
+  scFunc: TreeSearchFunc<T>,
+  currentLevel: number,
+  parent: T | undefined,
+  nodePath: Array<T>,
+  opt?: TreeBaseOpt<T>
 ): Array<T> {
-    const treeDataLen = treeData.length
-    for (let i = 0; i < treeDataLen; i++) {
-        const treeNode = treeData[i]
-        const currentPath = [...nodePath, treeNode]
-        const children = getTreePropsValue<T>(treeNode, 'children', opt)
-        const childrenIsArr = Array.isArray(children)
-        const childrenLen = childrenIsArr ? children.length : 0
+  const treeDataLen = treeData.length
+  for (let i = 0; i < treeDataLen; i++) {
+    const treeNode = treeData[i]
+    const currentPath = [...nodePath, treeNode]
+    const children = getTreePropsValue<T>(treeNode, 'children', opt)
+    const childrenIsArr = Array.isArray(children)
+    const childrenLen = childrenIsArr ? children.length : 0
 
-        const nodeInfo = {
-            level: currentLevel + 1,
-            index: i,
-            isLeaf: !childrenLen,
-            isFirst: i === 0,
-            isLast: i === treeDataLen - 1,
-            parent,
-            path: currentPath,
-            parentPath: nodePath,
-        }
-
-        if (opt?.direction) {
-            if (childrenLen) {
-                const childrenResult = _getOneNodePathBySearch<T>(
-                    children,
-                    scFunc,
-                    currentLevel + 1,
-                    treeNode,
-                    currentPath,
-                    opt
-                )
-                if (childrenResult.length) return childrenResult
-            }
-            const currentMatch = scFunc(treeNode, nodeInfo)
-            if (currentMatch) return currentPath
-        } else {
-            const currentMatch = scFunc(treeNode, nodeInfo)
-            if (currentMatch) return currentPath
-            if (childrenLen) {
-                const childrenResult = _getOneNodePathBySearch<T>(
-                    children,
-                    scFunc,
-                    currentLevel + 1,
-                    treeNode,
-                    currentPath,
-                    opt
-                )
-                if (childrenResult.length) return childrenResult
-            }
-        }
+    const nodeInfo = {
+      level: currentLevel + 1,
+      index: i,
+      isLeaf: !childrenLen,
+      isFirst: i === 0,
+      isLast: i === treeDataLen - 1,
+      parent,
+      path: currentPath,
+      parentPath: nodePath,
     }
-    return []
+
+    if (opt?.direction) {
+      if (childrenLen) {
+        const childrenResult = _getOneNodePathBySearch<T>(
+          children,
+          scFunc,
+          currentLevel + 1,
+          treeNode,
+          currentPath,
+          opt
+        )
+        if (childrenResult.length) return childrenResult
+      }
+      const currentMatch = scFunc(treeNode, nodeInfo)
+      if (currentMatch) return currentPath
+    } else {
+      const currentMatch = scFunc(treeNode, nodeInfo)
+      if (currentMatch) return currentPath
+      if (childrenLen) {
+        const childrenResult = _getOneNodePathBySearch<T>(
+          children,
+          scFunc,
+          currentLevel + 1,
+          treeNode,
+          currentPath,
+          opt
+        )
+        if (childrenResult.length) return childrenResult
+      }
+    }
+  }
+  return []
 }
 
 /**
@@ -73,12 +73,12 @@ function _getOneNodePathBySearch<T>(
  * @returns 找到的节点即父节点数组
  */
 export default function getOneNodePathBySearch<T>(
-    treeData: Array<T>,
-    scFunc: TreeSearchFunc<T>,
-    opt?: TreeBaseOpt<T>
+  treeData: Array<T>,
+  scFunc: TreeSearchFunc<T>,
+  opt?: TreeBaseOpt<T>
 ): Array<T> {
-    if (typeof scFunc !== 'function') return []
-    const deepData = getDeepTree<T>(treeData, opt, true)
-    if (!Array.isArray(deepData) || !deepData.length) return []
-    return _getOneNodePathBySearch<T>(deepData, scFunc, 0, undefined, [], opt)
+  if (typeof scFunc !== 'function') return []
+  const deepData = getDeepTree<T>(treeData, opt, true)
+  if (!Array.isArray(deepData) || !deepData.length) return []
+  return _getOneNodePathBySearch<T>(deepData, scFunc, 0, undefined, [], opt)
 }

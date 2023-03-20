@@ -12,12 +12,12 @@ import getOneNodePathBySearch from './get-one-node-path-by-search'
  * @returns 找到的节点
  */
 export default function getOneNodeBySearch<T>(
-    treeData: Array<T>,
-    scFunc: TreeSearchFunc<T>,
-    opt?: TreeBaseOpt<T>
+  treeData: Array<T>,
+  scFunc: TreeSearchFunc<T>,
+  opt?: TreeBaseOpt<T>
 ): T | undefined {
-    const result = getOneNodePathBySearch<T>(treeData, scFunc, opt)
-    const resultLen = result.length
-    if (!resultLen) return
-    return result[resultLen - 1]
+  const result = getOneNodePathBySearch<T>(treeData, scFunc, opt)
+  const resultLen = result.length
+  if (!resultLen) return
+  return result[resultLen - 1]
 }

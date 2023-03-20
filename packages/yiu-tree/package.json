@@ -1,56 +1,56 @@
 {
-    "name": "yiu-tree",
-    "version": "1.0.10",
-    "description": "A js library for manipulating trees.",
-    "scripts": {
-        "format": "prettier --ignore-path .prettierignore --write .",
-        "clear:dist": "rimraf dist",
-        "build:types": "tsc --project tsconfig.type.json",
-        "build:src": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
-        "build": "npm run clear:dist && npm run build:types && npm run build:src",
-        "version:major": "npm version major",
-        "version:minor": "npm version minor",
-        "version:patch": "npm version patch",
-        "version:premajor": "npm version premajor",
-        "version:preminor": "npm version preminor",
-        "version:prepatch": "npm version prepatch",
-        "version:prerelease": "npm version prerelease",
-        "test": "jest --detectOpenHandles"
-    },
-    "type": "module",
-    "types": "./dist/types/index.d.ts",
-    "unpkg": "./dist/umd/yiu-tree.min.js",
-    "jsdelivr": "./dist/umd/yiu-tree.min.js",
-    "browser": "./dist/umd/yiu-tree.min.js",
-    "main": "./dist/cjs/yiu-tree.min.cjs",
-    "module": "./dist/esm/yiu-tree.min.js",
-    "exports": {
-        ".": {
-            "import": "./dist/esm/yiu-tree.min.js",
-            "require": "./dist/cjs/yiu-tree.min.cjs"
-        }
-    },
-    "keywords": [
-        "tree"
-    ],
-    "author": "Fidel Yiu",
-    "license": "ISC",
-    "devDependencies": {
-        "@rollup/plugin-terser": "^0.4.0",
-        "@rollup/plugin-typescript": "^11.0.0",
-        "@types/jest": "^29.4.0",
-        "@types/node": "^18.13.0",
-        "@typescript-eslint/eslint-plugin": "^5.51.0",
-        "@typescript-eslint/parser": "^5.51.0",
-        "eslint": "^8.33.0",
-        "eslint-config-prettier": "^8.6.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "jest": "^29.4.2",
-        "prettier": "^2.8.3",
-        "rimraf": "^4.1.2",
-        "rollup": "^3.14.0",
-        "ts-jest": "^29.0.5",
-        "ts-node": "^10.9.1",
-        "typescript": "^4.9.5"
+  "name": "yiu-tree",
+  "version": "1.0.10",
+  "description": "A js library for manipulating trees.",
+  "scripts": {
+    "format": "prettier --ignore-path .prettierignore --write .",
+    "clear:dist": "rimraf dist",
+    "build:types": "tsc --project tsconfig.type.json",
+    "build:src": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "npm run clear:dist && npm run build:types && npm run build:src",
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch",
+    "version:premajor": "npm version premajor",
+    "version:preminor": "npm version preminor",
+    "version:prepatch": "npm version prepatch",
+    "version:prerelease": "npm version prerelease",
+    "test": "jest --detectOpenHandles"
+  },
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "unpkg": "./dist/umd/yiu-tree.min.js",
+  "jsdelivr": "./dist/umd/yiu-tree.min.js",
+  "browser": "./dist/umd/yiu-tree.min.js",
+  "main": "./dist/cjs/yiu-tree.min.cjs",
+  "module": "./dist/esm/yiu-tree.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/yiu-tree.min.js",
+      "require": "./dist/cjs/yiu-tree.min.cjs"
     }
+  },
+  "keywords": [
+    "tree"
+  ],
+  "author": "Fidel Yiu",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.4.2",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.2",
+    "rollup": "^3.14.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
 }

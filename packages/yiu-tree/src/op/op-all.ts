@@ -12,9 +12,9 @@ import treeOpBySearch from './op-by-search'
  * @returns 返回树，直接修改原数据
  */
 export default function opAll<T>(
-    treeData: Array<T>,
-    opFunc: TreeOperationFunc<T>,
-    opt?: TreeBaseOpt<T>
+  treeData: Array<T>,
+  opFunc: TreeOperationFunc<T>,
+  opt?: TreeBaseOpt<T>
 ): Array<T> {
-    return treeOpBySearch<T>(treeData, opFunc, () => true, opt)
+  return treeOpBySearch<T>(treeData, opFunc, () => true, opt)
 }

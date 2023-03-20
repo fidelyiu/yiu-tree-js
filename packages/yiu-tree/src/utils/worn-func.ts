@@ -8,19 +8,19 @@ import { TreeBaseOpt } from '../type'
  * @param value 接收到的值
  */
 export const worringNodeKeyShouldBeValid = (
-    log: boolean | undefined,
-    treeNode: any,
-    key: string,
-    value: any
+  log: boolean | undefined,
+  treeNode: any,
+  key: string,
+  value: any
 ) => {
-    // if (__YiuTreeWorn__ !== 'No') {
-    if (!log) return
-    if (value || value === 0) return
-    console.warn(
-        `The "${key}" attribute of the tree should be valid, but instead it receives "${value}".`,
-        treeNode
-    )
-    // }
+  // if (__YiuTreeWorn__ !== 'No') {
+  if (!log) return
+  if (value || value === 0) return
+  console.warn(
+    `The "${key}" attribute of the tree should be valid, but instead it receives "${value}".`,
+    treeNode
+  )
+  // }
 }
 
 /**
@@ -31,19 +31,19 @@ export const worringNodeKeyShouldBeValid = (
  * @param value 接收到的值
  */
 export const worringNodeKeyShouldBeArr = (
-    log: boolean | undefined,
-    treeNode: any,
-    key: string,
-    value: any
+  log: boolean | undefined,
+  treeNode: any,
+  key: string,
+  value: any
 ) => {
-    // if (__YiuTreeWorn__ !== 'No') {
-    if (!log) return
-    if (Array.isArray(value) || typeof value === 'undefined') return
-    console.warn(
-        `The "${key}" attribute of the tree should be array, but instead it receives "${value}".`,
-        treeNode
-    )
-    // }
+  // if (__YiuTreeWorn__ !== 'No') {
+  if (!log) return
+  if (Array.isArray(value) || typeof value === 'undefined') return
+  console.warn(
+    `The "${key}" attribute of the tree should be array, but instead it receives "${value}".`,
+    treeNode
+  )
+  // }
 }
 
 /**
@@ -54,19 +54,19 @@ export const worringNodeKeyShouldBeArr = (
  * @param value 接收到的值
  */
 export const worringFuncDoShouldBeValid = (
-    log: boolean | undefined,
-    treeNode: any,
-    funcName: string,
-    value: any
+  log: boolean | undefined,
+  treeNode: any,
+  funcName: string,
+  value: any
 ) => {
-    // if (__YiuTreeWorn__ !== 'No') {
-    if (!log) return
-    if (value || value === 0) return
-    console.warn(
-        `The result of the "${funcName}" function should be valid, but instead it receives "${value}".`,
-        treeNode
-    )
-    // }
+  // if (__YiuTreeWorn__ !== 'No') {
+  if (!log) return
+  if (value || value === 0) return
+  console.warn(
+    `The result of the "${funcName}" function should be valid, but instead it receives "${value}".`,
+    treeNode
+  )
+  // }
 }
 
 /**
@@ -77,19 +77,19 @@ export const worringFuncDoShouldBeValid = (
  * @param value 接收到的值
  */
 export const worringFuncDoShouldBeArr = (
-    log: boolean | undefined,
-    treeNode: any,
-    funcName: string,
-    value: any
+  log: boolean | undefined,
+  treeNode: any,
+  funcName: string,
+  value: any
 ) => {
-    // if (__YiuTreeWorn__ !== 'No') {
-    if (!log) return
-    if (Array.isArray(value) || typeof value === 'undefined') return
-    console.warn(
-        `The result of the "${funcName}" function should be array, but instead it receives "${value}".`,
-        treeNode
-    )
-    // }
+  // if (__YiuTreeWorn__ !== 'No') {
+  if (!log) return
+  if (Array.isArray(value) || typeof value === 'undefined') return
+  console.warn(
+    `The result of the "${funcName}" function should be array, but instead it receives "${value}".`,
+    treeNode
+  )
+  // }
 }
 
 /**
@@ -100,16 +100,16 @@ export const worringFuncDoShouldBeArr = (
  * @param value 接收到的值
  */
 export const worringOptKeyShouldBe = (
-    treeOpt: TreeBaseOpt,
-    key: string,
-    type: string,
-    value: any
+  treeOpt: TreeBaseOpt,
+  key: string,
+  type: string,
+  value: any
 ) => {
-    // if (__YiuTreeWorn__ !== 'No') {
-    if (!treeOpt.worn) return
-    console.warn(
-        `TreeOpt's "${key}" execution result type should be a "${type}", but a "${typeof value}" is received.`,
-        treeOpt
-    )
-    // }
+  // if (__YiuTreeWorn__ !== 'No') {
+  if (!treeOpt.worn) return
+  console.warn(
+    `TreeOpt's "${key}" execution result type should be a "${type}", but a "${typeof value}" is received.`,
+    treeOpt
+  )
+  // }
 }

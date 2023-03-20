@@ -4,96 +4,96 @@ import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 
 const bundles: RollupOptions[] = [
-    /* es */
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/esm/yiu-tree.js',
-            format: 'esm',
-        },
-        plugins: [typescript()],
+  /* es */
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/esm/yiu-tree.js',
+      format: 'esm',
     },
-    /* es min no map */
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/esm/yiu-tree.min.nomap.js',
-            format: 'esm',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript()],
+  },
+  /* es min no map */
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/esm/yiu-tree.min.nomap.js',
+      format: 'esm',
     },
-    /* es min */
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/esm/yiu-tree.min.js',
-            format: 'esm',
-            sourcemap: true,
-            sourcemapFile: 'dist/esm/yiu-tree.min.map',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript(), terser()],
+  },
+  /* es min */
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/esm/yiu-tree.min.js',
+      format: 'esm',
+      sourcemap: true,
+      sourcemapFile: 'dist/esm/yiu-tree.min.map',
     },
-    /* commonjs */
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/cjs/yiu-tree.cjs',
-            format: 'cjs',
-        },
-        plugins: [typescript()],
+    plugins: [typescript(), terser()],
+  },
+  /* commonjs */
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/cjs/yiu-tree.cjs',
+      format: 'cjs',
     },
-    /* commonjs min nomap*/
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/cjs/yiu-tree.min.nomap.cjs',
-            format: 'cjs',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript()],
+  },
+  /* commonjs min nomap*/
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/cjs/yiu-tree.min.nomap.cjs',
+      format: 'cjs',
     },
-    /* commonjs min */
-    {
-        input: 'src/index.ts',
-        output: {
-            file: 'dist/cjs/yiu-tree.min.cjs',
-            format: 'cjs',
-            sourcemap: true,
-            sourcemapFile: 'dist/cjs/yiu-tree.min.map',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript(), terser()],
+  },
+  /* commonjs min */
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/cjs/yiu-tree.min.cjs',
+      format: 'cjs',
+      sourcemap: true,
+      sourcemapFile: 'dist/cjs/yiu-tree.min.map',
     },
-    /* umd */
-    {
-        input: 'src/index.ts',
-        output: {
-            name: 'YiuTree',
-            file: 'dist/umd/yiu-tree.js',
-            format: 'umd',
-        },
-        plugins: [typescript()],
+    plugins: [typescript(), terser()],
+  },
+  /* umd */
+  {
+    input: 'src/index.ts',
+    output: {
+      name: 'YiuTree',
+      file: 'dist/umd/yiu-tree.js',
+      format: 'umd',
     },
-    /* umd min no map */
-    {
-        input: 'src/index.ts',
-        output: {
-            name: 'YiuTree',
-            file: 'dist/umd/yiu-tree.min.nomap.js',
-            format: 'umd',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript()],
+  },
+  /* umd min no map */
+  {
+    input: 'src/index.ts',
+    output: {
+      name: 'YiuTree',
+      file: 'dist/umd/yiu-tree.min.nomap.js',
+      format: 'umd',
     },
-    /* umd min */
-    {
-        input: 'src/index.ts',
-        output: {
-            name: 'YiuTree',
-            file: 'dist/umd/yiu-tree.min.js',
-            format: 'umd',
-            sourcemap: true,
-            sourcemapFile: 'dist/umd/yiu-tree.min.map',
-        },
-        plugins: [typescript(), terser()],
+    plugins: [typescript(), terser()],
+  },
+  /* umd min */
+  {
+    input: 'src/index.ts',
+    output: {
+      name: 'YiuTree',
+      file: 'dist/umd/yiu-tree.min.js',
+      format: 'umd',
+      sourcemap: true,
+      sourcemapFile: 'dist/umd/yiu-tree.min.map',
     },
+    plugins: [typescript(), terser()],
+  },
 ]
 
 export default defineConfig(bundles)
