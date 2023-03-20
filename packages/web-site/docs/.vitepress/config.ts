@@ -20,6 +20,7 @@ export default defineConfig({
     nav: [
       { text: "指引", link: "/guide/index.md" },
       { text: "工具", link: "/tool/get/get-filter-by-search/index.md" },
+      { text: "类型", link: "/type/TreeFunc/index.md" },
     ],
     sidebar: {
       "/tool/": [
@@ -74,6 +75,11 @@ export default defineConfig({
             { text: "op-by-search", link: "/tool/op/op-by-search/index.md" },
           ],
         },
+      ],
+      "/type/": [
+        { text: "Func", link: "/type/TreeFunc/index.md" },
+        { text: "NodeInfo", link: "/type/TreeNodeInfo/index.md" },
+        { text: "Opt", link: "/type/TreeOpt/index.md" },
       ],
     },
   },
