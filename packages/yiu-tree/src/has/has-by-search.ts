@@ -18,7 +18,7 @@ function _hasBySearch<T>(
         const childrenIsArr = Array.isArray(children)
         const childrenLen = childrenIsArr ? children.length : 0
 
-        const currentMatch = scFunc(treeNode, {
+        const nodeInfo = {
             level: currentLevel + 1,
             index: i,
             isLeaf: !childrenLen,
@@ -27,21 +27,43 @@ function _hasBySearch<T>(
             parent,
             path: currentPath,
             parentPath: nodePath,
-        })
+        }
 
-        if (currentMatch) return true
-        if (!childrenIsArr) return false
+        if (opt?.direction) {
+            /* 子节点 */
+            if (childrenLen) {
+                const childrenSearchResult = _hasBySearch<T>(
+                    children,
+                    scFunc,
+                    currentLevel + 1,
+                    treeNode,
+                    currentPath,
+                    opt
+                )
+                if (childrenSearchResult) return true
+            }
 
-        const childrenSearchResult = _hasBySearch<T>(
-            children,
-            scFunc,
-            currentLevel + 1,
-            treeNode,
-            currentPath,
-            opt
-        )
+            /* 当前节点 */
+            const currentMatch = scFunc(treeNode, nodeInfo)
+            if (currentMatch) return true
+        } else {
+            /* 当前节点 */
+            const currentMatch = scFunc(treeNode, nodeInfo)
+            if (currentMatch) return true
 
-        if (childrenSearchResult) return true
+            /* 子节点 */
+            if (childrenLen) {
+                const childrenSearchResult = _hasBySearch<T>(
+                    children,
+                    scFunc,
+                    currentLevel + 1,
+                    treeNode,
+                    currentPath,
+                    opt
+                )
+                if (childrenSearchResult) return true
+            }
+        }
     }
     return false
 }

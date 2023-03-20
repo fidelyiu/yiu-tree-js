@@ -9,7 +9,7 @@ function _getShakeBySearch<T>(
     currentLevel: number,
     parent: any,
     nodePath: Array<T>,
-    opt: TreeBaseOpt<T>
+    opt?: TreeBaseOpt<T>
 ): { data: T[]; hasShake: boolean } {
     let hasShake = false
     const result: T[] = []
@@ -24,30 +24,7 @@ function _getShakeBySearch<T>(
         const children = getTreePropsValue<T>(treeNode, 'children', opt)
         const childrenIsArr = Array.isArray(children)
         const childrenLen = childrenIsArr ? children.length : 0
-        if (childrenLen !== 0) {
-            const childrenShakeResult = _getShakeBySearch<T>(
-                children,
-                scFunc,
-                currentLevel + 1,
-                treeNode,
-                currentPath,
-                opt
-            )
-
-            if (childrenShakeResult.hasShake) {
-                hasShake = true
-            }
-
-            setTreePropsValue<T>(
-                treeNode,
-                'children',
-                childrenShakeResult.data,
-                opt
-            )
-        }
-
-        // 当前节点是否匹配
-        const currentMatch = scFunc(treeNode, {
+        const nodeInfo = {
             level: currentLevel + 1,
             index: i,
             isLeaf: !childrenLen,
@@ -56,12 +33,71 @@ function _getShakeBySearch<T>(
             parent,
             path: currentPath,
             parentPath: nodePath,
-        })
+        }
 
-        if (currentMatch) {
-            result.push(treeNode)
+        if (opt?.direction) {
+            /* 子节点 */
+            if (childrenLen) {
+                const childrenShakeResult = _getShakeBySearch<T>(
+                    children,
+                    scFunc,
+                    currentLevel + 1,
+                    treeNode,
+                    currentPath,
+                    opt
+                )
+
+                if (childrenShakeResult.hasShake) {
+                    hasShake = true
+                }
+
+                setTreePropsValue<T>(
+                    treeNode,
+                    'children',
+                    childrenShakeResult.data,
+                    opt
+                )
+            }
+
+            // 当前节点是否匹配
+            const currentMatch = scFunc(treeNode, nodeInfo)
+
+            if (currentMatch) {
+                result.push(treeNode)
+            } else {
+                hasShake = true
+            }
         } else {
-            hasShake = true
+            // 当前节点是否匹配
+            const currentMatch = scFunc(treeNode, nodeInfo)
+
+            if (currentMatch) {
+                /* 子节点 */
+                if (childrenLen) {
+                    const childrenShakeResult = _getShakeBySearch<T>(
+                        children,
+                        scFunc,
+                        currentLevel + 1,
+                        treeNode,
+                        currentPath,
+                        opt
+                    )
+
+                    if (childrenShakeResult.hasShake) {
+                        hasShake = true
+                    }
+
+                    setTreePropsValue<T>(
+                        treeNode,
+                        'children',
+                        childrenShakeResult.data,
+                        opt
+                    )
+                }
+                result.push(treeNode)
+            } else {
+                hasShake = true
+            }
         }
     }
     treeData = result

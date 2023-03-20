@@ -53,7 +53,14 @@ type TreeBaseOpt<T = any> = {
 
 ### direction
 
-如果`direction`为`false`，则工具的执行方向会先处理子节点，再处理当前节点。
+如果`direction`为`true`，则工具的执行方向会先处理子节点，再处理当前节点。
+
+该属性仅影响一下方法:
+
+- `opBySearch`
+- `hasBySearch`
+- `getShakeBySearch`
+- `getOneNodePathBySearch`
 
 ## TreeFilterOpt
 

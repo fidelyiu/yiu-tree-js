@@ -18,7 +18,7 @@ function _getOneNodePathBySearch<T>(
         const childrenIsArr = Array.isArray(children)
         const childrenLen = childrenIsArr ? children.length : 0
 
-        const currentSearchResult = scFunc(treeNode, {
+        const nodeInfo = {
             level: currentLevel + 1,
             index: i,
             isLeaf: !childrenLen,
@@ -27,23 +27,37 @@ function _getOneNodePathBySearch<T>(
             parent,
             path: currentPath,
             parentPath: nodePath,
-        })
+        }
 
-        if (currentSearchResult) return [treeNode]
-
-        if (!childrenLen) continue
-
-        const childrenResult = _getOneNodePathBySearch<T>(
-            children,
-            scFunc,
-            currentLevel + 1,
-            treeNode,
-            currentPath,
-            opt
-        )
-
-        if (!childrenResult.length) continue
-        return [treeNode, ...childrenResult]
+        if (opt?.direction) {
+            if (childrenLen) {
+                const childrenResult = _getOneNodePathBySearch<T>(
+                    children,
+                    scFunc,
+                    currentLevel + 1,
+                    treeNode,
+                    currentPath,
+                    opt
+                )
+                if (childrenResult.length) return childrenResult
+            }
+            const currentMatch = scFunc(treeNode, nodeInfo)
+            if (currentMatch) return currentPath
+        } else {
+            const currentMatch = scFunc(treeNode, nodeInfo)
+            if (currentMatch) return currentPath
+            if (childrenLen) {
+                const childrenResult = _getOneNodePathBySearch<T>(
+                    children,
+                    scFunc,
+                    currentLevel + 1,
+                    treeNode,
+                    currentPath,
+                    opt
+                )
+                if (childrenResult.length) return childrenResult
+            }
+        }
     }
     return []
 }

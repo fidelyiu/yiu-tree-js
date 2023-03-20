@@ -20,45 +20,62 @@ function _opBySearch<T>(
         const children = getTreePropsValue<T>(item, 'children', opt)
         let childrenLen = 0
         if (Array.isArray(children)) childrenLen = children.length
-        if (childrenLen > 0) {
-            setTreePropsValue<T>(
-                item,
-                'children',
-                _opBySearch<T>(
-                    children,
-                    opFunc,
-                    scFunc,
-                    currentLevel + 1,
-                    item,
-                    currentPath,
-                    opt
-                ),
-                opt
-            )
+
+        const nodeInfo = {
+            level: currentLevel + 1,
+            index,
+            isLeaf: !childrenLen,
+            isFirst: index === 0,
+            isLast: index === treeData.length - 1,
+            parent,
+            path: currentPath,
+            parentPath: nodePath,
         }
-        if (
-            scFunc(item, {
-                level: currentLevel + 1,
-                index,
-                isLeaf: !childrenLen,
-                isFirst: index === 0,
-                isLast: index === treeData.length - 1,
-                parent,
-                path: currentPath,
-                parentPath: nodePath,
-            })
-        ) {
-            // 符合要求的item
-            opFunc(item, {
-                level: currentLevel + 1,
-                index,
-                isLeaf: !childrenLen,
-                isFirst: index === 0,
-                isLast: index === treeData.length - 1,
-                parent,
-                path: currentPath,
-                parentPath: nodePath,
-            })
+
+        if (opt?.direction) {
+            /* 子节点 */
+            if (childrenLen) {
+                setTreePropsValue<T>(
+                    item,
+                    'children',
+                    _opBySearch<T>(
+                        children,
+                        opFunc,
+                        scFunc,
+                        currentLevel + 1,
+                        item,
+                        currentPath,
+                        opt
+                    ),
+                    opt
+                )
+            }
+            /* 当前节点 */
+            if (scFunc(item, nodeInfo)) {
+                opFunc(item, nodeInfo)
+            }
+        } else {
+            /* 当前节点 */
+            if (scFunc(item, nodeInfo)) {
+                opFunc(item, nodeInfo)
+            }
+            /* 子节点 */
+            if (childrenLen) {
+                setTreePropsValue<T>(
+                    item,
+                    'children',
+                    _opBySearch<T>(
+                        children,
+                        opFunc,
+                        scFunc,
+                        currentLevel + 1,
+                        item,
+                        currentPath,
+                        opt
+                    ),
+                    opt
+                )
+            }
         }
     }
     return treeData
