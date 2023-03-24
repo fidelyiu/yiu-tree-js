@@ -22,6 +22,7 @@ export default defineConfig({
       { text: "工具", link: "/tool/get/get-filter-by-search/index.md" },
       { text: "类型", link: "/type/TreeFunc/index.md" },
       { text: "实践&建议", link: "/practice/index.md" },
+      { text: "FY.IO", link: "https://fidelyiu.github.io/" },
     ],
     sidebar: {
       "/tool/": [
