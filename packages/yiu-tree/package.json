@@ -1,6 +1,6 @@
 {
   "name": "yiu-tree",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A js library for manipulating trees.",
   "scripts": {
     "format": "prettier --ignore-path .prettierignore --write .",
@@ -19,6 +19,7 @@
   },
   "type": "module",
   "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "unpkg": "./dist/umd/yiu-tree.min.js",
   "jsdelivr": "./dist/umd/yiu-tree.min.js",
   "browser": "./dist/umd/yiu-tree.min.js",
@@ -26,6 +27,7 @@
   "module": "./dist/esm/yiu-tree.min.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/yiu-tree.min.js",
       "require": "./dist/cjs/yiu-tree.min.cjs"
     }
