@@ -10,3 +10,4 @@ tsconfig.type.json
 jest.config.ts
 test
 coverage
+mock

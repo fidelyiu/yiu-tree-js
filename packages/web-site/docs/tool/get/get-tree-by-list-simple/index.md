@@ -45,3 +45,12 @@ getTreeByListSimple(nodeList, [opt])
 - `opt`:
   - 类型: `TreeBaseOpt<T>`
   - 说明: 树配置
+
+
+## 注意
+
+因为这个算法是变量两遍数组，然后在过滤出没有`pid`的节点。
+
+所以务必确保根节点的`pid`一定要是判断为`false`的值，比如`''`。
+
+否则的话，最后一步过滤将会少数据。
